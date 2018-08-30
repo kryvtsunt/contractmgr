@@ -97,6 +97,10 @@ public class Contact {
             this.phone = phone;
             return this;
         }
+
+        public Contact build() {
+            return new Contact(this);
+        }
     }
 
 
