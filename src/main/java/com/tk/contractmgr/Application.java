@@ -25,9 +25,7 @@ public class Application {
                 .withPhone(101L)
                 .build();
         save(contact);
-        for(Contact c: fetchAllContacts()) {
-            System.out.println(c);
-        }
+        fetchAllContacts().stream().forEach(System.out::println);
     }
 
     @SuppressWarnings("unchecked")
@@ -38,6 +36,30 @@ public class Application {
         session.close();
         return contacts;
     }
+
+    private static Contact findContactById(int id) {
+        Session session = sessionFactory.openSession();
+        Contact contact = session.get(Contact.class,id);
+        session.close();
+        return contact;
+    }
+
+    private static void delete(Contact contact) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(contact);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    private static void update(Contact contact) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(contact);
+        session.getTransaction().commit();
+        session.close();
+    }
+
 
     private static void save(Contact contact){
         Session session = sessionFactory.openSession();

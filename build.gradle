@@ -1,9 +1,8 @@
-plugins {
-    id 'java'
-}
 
 group 'com.tk'
 version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
@@ -16,3 +15,4 @@ dependencies {
     compile 'com.h2database:h2:1.4.191'
     compile 'javax.transaction:jta:1.1'
 }
+
