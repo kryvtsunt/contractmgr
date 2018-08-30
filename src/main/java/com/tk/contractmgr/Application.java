@@ -1,7 +1,22 @@
 package com.tk.contractmgr;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+
 public class Application {
+    private static final SessionFactory sessionFactory = buildSessionFactory();
+
+    private static SessionFactory buildSessionFactory() {
+        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+        return new MetadataSources(registry).buildMetadata().buildSessionFactory();
+    }
+
     public static void main(String[] args) {
+
 
     }
 }
