@@ -1,0 +1,10 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver.class">org.h2.Driver</property>
+        <property name="connection.url">jdbc:h2:./data/contractmgr</property>
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+        <property name="hbm2ddl.auto">create</property>
+
+        <mapping class="com.tk.contractmgr.model.Contact" />
+    </session-factory>
+</hibernate-configuration>
